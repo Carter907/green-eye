@@ -1,6 +1,131 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="content">
-  {{docs|markdown}}
-  </div>
+
+<div class="flex flex-col justify-center gap-20">
+
+    <div class="flex flex-col gap-5">
+        <div class="relative w-full md:w-96">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                          clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <input type="text" id="search-input"
+                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5 "
+                   placeholder="Search your county in Tampa" required>
+        </div>
+        <div class="border p-4 rounded">
+
+            <label for="gemini-summary" class="underline opacity-50">Summary</label><textarea
+                id="gemini-summary"
+                cols="50"
+                class="w-full resize-none select-none sm:text-sm p-4"
+                placeholder="Gemini deforestation summary..."
+                rows="4"
+        ></textarea>
+            <button type="submit">
+                <a
+                        class="inline-block rounded border border-current px-8 py-3 text-sm font-medium text-gray-600 transition hover:scale-105 hover:shadow-xl focus:ring-3 focus:outline-hidden"
+                        hx-post="/gemini-summary" hx-target="#gemini-summary" hx-swap="innerHTML"
+                >
+                    Summarize
+                </a>
+            </button>
+        </div>
+    </div>
+
+    <span class="flex items-center">
+  <span class="h-px flex-1 bg-gray-300"></span>
+
+  <span class="shrink-0 px-4 text-gray-900">FAQ Section</span>
+
+  <span class="h-px flex-1 bg-gray-300"></span>
+</span>
+    <div class="space-y-4">
+
+        <details class="group [&_summary::-webkit-details-marker]:hidden" open>
+            <summary
+                    class="flex items-center justify-between gap-1.5 rounded-md border border-gray-100 bg-gray-50 p-4 text-gray-900"
+            >
+                <h2 class="text-lg font-medium">What does Green Eye do?</h2>
+
+                <svg
+                        class="size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M19 9l-7 7-7-7"/>
+                </svg>
+            </summary>
+
+            <p class="px-4 pt-4 text-gray-900">
+                Green Eye provides a holistic view of the deforestation in the Tampa Bay region.
+                Input your county and see if there is any news or information on the
+                deforestation in that area. Gemini will give you a quick overview.
+            </p>
+        </details>
+
+        <details class="group [&_summary::-webkit-details-marker]:hidden">
+            <summary
+                    class="flex items-center justify-between gap-1.5 rounded-md border border-gray-100 bg-gray-50 p-4 text-gray-900"
+            >
+                <h2 class="text-lg font-medium">How did I build it?</h2>
+
+                <svg
+                        class="size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M19 9l-7 7-7-7"/>
+                </svg>
+            </summary>
+
+            <p class="px-4 pt-4 text-gray-900">
+                Being a solo hacker, I wanted to use something different. I wanted to pick a
+                programming language that I had never used before and that I suspect nobody else
+                would at the hackathon. Being familiar with the JVM and inspired by functional
+                programming, I decided to make the server in the Clojure programming language.
+                The web server is created using Luminus, a web framework for Clojure. The frontend
+                is statically served, but functionality is added using HTMX and Tailwind.
+            </p>
+        </details>
+
+        <details class="group [&_summary::-webkit-details-marker]:hidden">
+            <summary
+                    class="flex items-center justify-between gap-1.5 rounded-md border border-gray-100 bg-gray-50 p-4 text-gray-900"
+            >
+                <h2 class="text-lg font-medium">What's next for Green Eye?</h2>
+
+                <svg
+                        class="size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M19 9l-7 7-7-7"/>
+                </svg>
+            </summary>
+
+            <p class="px-4 pt-4 text-gray-900">
+                Since, I didn't stay up all night for this project (lol), I didn't complete this
+                project in time. I would like to learn more about Clojure so that I can add the
+                main functionality to the
+                site. I look forward to learning to interfacing with the Gemini API using
+                Clojure's http client libraries.
+
+            </p>
+        </details>
+    </div>
+</div>
 {% endblock %}
