@@ -159,5 +159,6 @@
     <orderEntry type="library" name="Leiningen: selmer:1.12.55" level="project" />
     <orderEntry type="library" name="Leiningen: tech.droit/clj-diff:1.0.1" level="project" />
     <orderEntry type="library" name="Leiningen: tigris:0.1.1" level="project" />
+    <orderEntry type="library" name="@tailwindcss" level="application" />
   </component>
 </module>

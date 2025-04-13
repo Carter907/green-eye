@@ -1,61 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to green-eye</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 
-    <!-- styles -->
-    {% style "/assets/bulma/css/bulma.min.css" %}
-    {% style "/assets/material-icons/css/material-icons.min.css" %}
+</head>
+<body class="antialiased">
+<!-- navbar -->
+<nav class="border flex flex-row bg-gray-200">
+    <div class="basis-1/4 flex border-black text-center justify-center">
+        <a href="/" class="font-bold self-center">green-eye</a>
 
-    {% style "/css/screen.css" %}
-  </head>
-  <body>
-      <!-- navbar -->
-      <nav class="navbar is-info">
-          <div class="container">
-              <div class="navbar-brand">
-                  <a class="navbar-item" href="/" style="font-weight:bold;">green-eye</a>
-                  <span class="navbar-burger burger" data-target="nav-menu">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                  </span>
-              </div>
-              <div id="nav-menu" class="navbar-menu">
-                  <div class="navbar-start">
-                      <a href="/" class="navbar-item{% ifequal page "home.html" %} is-active{%endifequal%}">Home</a>
-                      <a href="/about" class="navbar-item{% ifequal page "about.html" %} is-active{%endifequal%}">About</a>
-                      <a href="/deforest"
-                         class="navbar-item{% ifequal page "deforestation.html" %}
-                      is-active{%endifequal%}">Deforestation</a>
-                  </div>
-              </div>
-          </div>
-      </nav>
+    </div>
 
-      <section class="section">
-          <div class="container">
-              {% block content %}
-              {% endblock %}
-          </div>
-      </section>
+    <div class="flex flex-row gap-10">
+        <a href="/" class="hover:bg-gray-50 p-4">Home</a>
+        <a href="/about" class="hover:bg-gray-50 p-4" >About</a>
+        <a href="/deforest" class="hover:bg-gray-50 p-4">Deforestation</a>
+    </div>
 
-    <!-- scripts -->
-    <script type="text/javascript">
-      (function() {
-        var burger = document.querySelector('.burger');
-        var nav = document.querySelector('#'+burger.dataset.target);
-        burger.addEventListener('click', function(){
-          burger.classList.toggle('is-active');
-          nav.classList.toggle('is-active');
-        });
-      })();
-    </script>
+</nav>
 
-    
-    {% block page-scripts %}
-    {% endblock %}
-  </body>
+<section class="prose flex flex-col justify-center my-20 min-w-full">
+    <div class="w-1/2 self-center">
+        {% block content %}
+        {% endblock %}
+    </div>
+</section>
+
+
+{% block page-scripts %}
+{% endblock %}
+</body>
 </html>
